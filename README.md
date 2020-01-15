@@ -1,4 +1,4 @@
-# \Quick start!
+# Quick start!
 
 
 ## Pasos para clonar y probar el repositorio
