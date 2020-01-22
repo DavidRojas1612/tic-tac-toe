@@ -12,7 +12,7 @@ export class MyFirstComponent extends LitElement {
   }
 
   firstUpdated() {
-    const router = new Router(this.shadowRoot.querySelector('#outlet'));
+    const router = new Router(this.shadowRoot.getElementById('outlet'));
     const token = localStorage.getItem('token');
     renderRoute (router, token);
   }

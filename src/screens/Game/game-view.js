@@ -21,7 +21,7 @@ export class GameView extends LitElement {
     this.winner = null;
   }
 
-  handleClick = (i) => () => {
+  handleClick(i) {
     const current = this.history.slice(0, this.stepNumber + 1)[this.history.length-1];
     const squares = current.squares.slice();
     if (squares[i]) {
@@ -35,7 +35,7 @@ export class GameView extends LitElement {
     this.winner = winner;
   }
 
-  jumpTo = step => () => {
+  jumpTo (step) {
     this.stepNumber = step;
     this.xIsNext = step % 2 === 0;
     if(this.winner) this.winner = null;
@@ -48,7 +48,7 @@ export class GameView extends LitElement {
       const desc = move ? `Go to move #${move}` : 'Go to game start';
       return (
         html`<li key="${desc}" className={styles.itemHistory}>
-          <button type="button" @click="${this.jumpTo(move)}">${desc}</button>
+          <button type="button" @click="${() => this.jumpTo(move)}">${desc}</button>
         </li>`
       );
     });
@@ -57,7 +57,7 @@ export class GameView extends LitElement {
       <div className={styles.gameBoard}>
       <component-board
         .squares=${current.squares}
-        .onClick=${this.handleClick}
+        .onClick=${(i) => this.handleClick(i)}
         .winner=${this.winner}
       ></component-board>
       </div>

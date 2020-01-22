@@ -19,12 +19,12 @@ export class Board extends LitElement {
     return html`
     <component-square 
       .value=${this.squares[i]}
-      .onClick=${this.onClick(i)}
+      .onClick=${() => this.onClick(i)}
       .disable=${!!this.winner}
     ></component-square>`;
   }
 
-  handleLogout = () => {
+  handleLogout() {
     localStorage.removeItem('token');
     window.location.pathname = '/demo/login';
   }
